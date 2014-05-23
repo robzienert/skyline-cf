@@ -2,6 +2,8 @@ site :opscode
 
 metadata
 
+cookbook 'redis', github: 'miah/chef-redis'
 # cookbook "redis", git: "git@github.com:miah/chef-redis.git", branch: "master", protocol: :ssh
 # cookbook "scipy", git: "git@github.com:bflad/chef-scipy.git", branch: "master", protocol: :ssh
+# cookbook "scipy", github: 'bflad/chef-scipy'
 cookbook "skyline", git: "git@github.com:bflad/chef-skyline.git", branch: "master", protocol: :ssh
