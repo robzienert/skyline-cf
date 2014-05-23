@@ -1,0 +1,17 @@
+source 'https://rubygems.org'
+
+gem 'berkshelf', '~> 2.0.14'
+
+group :development do
+  gem 'foodcritic', '~> 3.0.3'
+  gem 'guard-foodcritic', '~> 1.0.2'
+
+  gem 'guard', '~> 1.8.3'
+  gem 'guard-kitchen', '~> 0.0.2'
+
+  gem 'test-kitchen', '~> 1.2.1'
+  gem 'kitchen-vagrant', '~> 0.14.0'
+
+  gem 'rubocop', '~> 0.20.0'
+  gem 'guard-rubocop', '~> 0.2.2'
+end

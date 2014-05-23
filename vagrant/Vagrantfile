@@ -1,0 +1,31 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+require 'berkshelf/vagrant'
+
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+
+  config.vm.box = "precise64"
+  config.vm.box_url = "http://files.vagrantup.com/precise64.box" 
+  config.vm.hostname = "#{ `whoami`.strip}-localhost"
+  
+  config.berkshelf.enabled = true
+  config.berkshelf.berksfile_path = "../chef/Berksfile"
+  config.omnibus.chef_version = "11.12.4"
+  
+  config.vm.network :private_network, ip: "192.168.60.70"
+ 
+  config.vm.synced_folder '../chef', '/opt/chef-solo/skyline'
+
+  config.vm.provider :virtualbox do |vb|
+    vb.customize ["modifyvm", :id, "--memory", 1024]
+    vb.customize ["modifyvm", :id, "--cpus", 2]
+  end
+
+  config.vm.provision "chef_solo" do |chef|
+    chef.run_list = ["role[skyline-cf]"]
+  end
+
+end

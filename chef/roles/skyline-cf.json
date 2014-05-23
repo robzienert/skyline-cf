@@ -1,0 +1,16 @@
+{
+  "name": "skyline",
+  "chef_type": "role",
+  "json_class": "Chef::Role",
+  "description": "Installs Etsy's Skyline application on one machine",
+  "default_attributes": {
+    "redis": {
+      "config": {
+        "unixsocket": "/tmp/redis.sock"
+      }
+    }
+  },
+  "run_list": [
+    "recipe[skyline]"
+  ]  
+}
